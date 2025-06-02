@@ -1,0 +1,156 @@
+/* ✅ 기본 행 스타일 */
+.budget-row {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #fff;
+  transform: scale(1);
+  transition: all 0.2s ease;
+}
+
+.budget-col:has(input:hover),
+.budget-col:has(input:focus) {
+  transform: scale(1.2);
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  
+}
+
+
+/* ✅ 열 스타일 */
+.budget-col {
+  flex: 1;
+  padding: 0 8px;
+}
+
+/* ✅ input 스타일 */
+.budget-col input {
+  width: 90%;
+  padding: 6px 8px;
+  font-size: 12px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+select.popup-input {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #333;
+  appearance: none;
+  transition: all 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+
+  /* 초기 살짝 내려가 있고 투명도 낮춤 */
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+select.popup-input:focus {
+  border-color: #6690ff;
+  box-shadow: 0 0 6px rgba(88, 130, 255, 0.3);
+  transform: translateY(-4px); /* 🔥 포커스 시 살짝 위로 뜨는 느낌 */
+  opacity: 1;
+}
+/* 포커스 되었을 때 */
+.budget-col input:focus {
+  border-color: #6690ff;
+  box-shadow: 0 0 0 2px rgba(102, 144, 255, 0.2); /* 살짝 퍼지는 느낌 */
+  outline: none;
+  background-color: #fcfcff;
+}
+
+.budget-col.narrow .input-with-unit input,
+.budget-col.narrow input {
+  text-align: right;
+  width: 80px;
+}
+/* 메모 래퍼: 기존보다 오른쪽으로 3px (필요시 margin 또는 transform 조정) */
+..memo-wrapper {
+  position: relative;
+  width: 100%;
+  margin-left: 23px;
+}
+
+/* 메모 입력 영역: 기본 높이를 60px(3줄)로 고정 */
+.memo-input {
+  width: 100%;
+  height: 60px;        /* 초기 고정 높이 지정 */
+  padding: 6px 40px 6px 6px;  /* 오른쪽에 X 버튼 공간 확보 */
+  font-size: 14px;
+  border: 1px solid #6690ff;
+  border-radius: 12px;
+  background-color: #fff;
+  resize: none;       /* 사용자가 직접 리사이즈하지 못하도록 */
+  overflow-y: hidden;  /* 내용이 넘칠 경우 자동 확장 시 숨김 처리 */
+  transition: height 0.3s ease;
+  color: #333;
+}
+
+/* Chrome, Edge, Safari */
+.memo-input::-webkit-scrollbar {
+  display: none;
+}
+.memo-input.expanded {
+  height: 180px;
+  border: 1px solid #6690ff;
+  box-shadow: 0 0 6px rgba(102, 144, 255, 0.2);
+  background-color: #fefeff;
+}
+
+/* ✅ 숫자 스핀 버튼 제거 */
+.budget-col input[type="number"]::-webkit-inner-spin-button,
+.budget-col input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.budget-col input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+ 
+.input-animate-wrapper {
+  transform: scale(0.95);
+  opacity: 0;
+  animation: popIn 0.25s ease-out forwards;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+
+/* ✅ 삭제 버튼: 행 hover 시만 보이게 */
+.action-buttons-wrapper {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-icon-inline {
+  display: none;
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.budget-row:hover .delete-icon-inline {
+  display: block;
+}
